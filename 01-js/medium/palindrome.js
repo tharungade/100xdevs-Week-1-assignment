@@ -7,6 +7,34 @@
 */
 
 function isPalindrome(str) {
+  if (typeof str != "string") {
+    return false;
+  }
+
+  str = str.toLowerCase();
+  let n = str.length;
+  let left = 0,
+    right = n - 1,
+    leftCharCode,
+    rightCharCode;
+  while (left < right) {
+    leftCharCode = str.charCodeAt(left);
+    if (!(leftCharCode > 96 && leftCharCode < 123)) {
+      left++;
+      continue;
+    }
+    rightCharCode = str.charCodeAt(right);
+    if (!(rightCharCode > 96 && rightCharCode < 123)) {
+      right--;
+      continue;
+    }
+    if (str[left] != str[right]) {
+      return false;
+    }
+    left++;
+    right--;
+  }
+
   return true;
 }
 
